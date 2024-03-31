@@ -1,0 +1,29 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "run-s build:*",
+    "build:nuxt": "nuxt build",
+    "build:ssc": "ssc build --prod . -r",
+    "dev": "bun run watch",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "start": "bun scripts/kill.ts 3000 && bun run dev",
+    "watch": "run-p watch:*",
+    "watch:nuxt": "nuxt dev",
+    "watch:ssc": "ssc build -r --port=3000 ."
+  },
+  "dependencies": {
+    "nuxt": "^3.11.1",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^1.1.5",
+    "@types/bun": "^1.0.12",
+    "nuxt-build-cache": "latest",
+    "npm-run-all2": "^6.1.2"
+  }
+}
