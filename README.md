@@ -1,6 +1,10 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 & Socket Minimal Starter
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more about the frontend.
+
+you will need ssc in your "PATH"" before starting
+
+check out [socket supply](https://github.com/socketsupply/socket) to learn more about the cross platform runtime for creating native apps
 
 ## Setup
 
@@ -20,7 +24,7 @@ yarn install
 bun install
 ```
 
-## Development Server
+<!-- ## Development Server
 
 Start the development server on `http://localhost:3000`:
 
@@ -36,7 +40,7 @@ yarn dev
 
 # bun
 bun run dev
-```
+``` -->
 
 ## Production
 
@@ -56,20 +60,5 @@ yarn build
 bun run build
 ```
 
-Locally preview production build:
 
-```bash
-# npm
-npm run preview
 
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
