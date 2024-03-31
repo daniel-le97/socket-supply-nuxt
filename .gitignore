@@ -11,6 +11,8 @@ lerna-debug.log*
 .sscrc
 .*.env
 
+bun.lockb
+
 # Ignore all files in the node_modules folder
 node_modules/
 
