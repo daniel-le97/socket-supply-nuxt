@@ -6,6 +6,12 @@ you will need ssc in your "PATH"" before starting
 
 check out [socket supply](https://github.com/socketsupply/socket) to learn more about the cross platform runtime for creating native apps
 
+
+this features an extension allowing terminal use, copied from [term-ext](https://github.com/socketsupply/socket-examples/tree/master/socket-features/extension)
+
+
+## DEV DOES NOT YET WORK
+
 ## Setup
 
 Make sure to install the dependencies:
