@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-# ./scripts/init-sqlite3-build.sh
-sqlite3_build_dir="build/sqlite3"
+root="$(CDPATH='' cd -- "$(dirname "$(dirname -- "$0")")" && pwd)"
+
+build_dir="$root/build"
+sqlite3_build_dir="$root/build/sqlite3"
 sqlite3_zip_file="$sqlite3_build_dir/sqlite3.zip"
 sqlite3_download_url="https://www.sqlite.org/2024/sqlite-amalgamation-3450200.zip"
 
