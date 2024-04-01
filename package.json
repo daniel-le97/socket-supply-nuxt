@@ -5,7 +5,7 @@
   "scripts": {
     "build": "run-s build:*",
     "build:nuxt": "nuxt build",
-    "build:ssc": "ssc build -r",
+    "build:ssc": "ssc build --prod",
     "dev": "bun run watch",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
