@@ -4,9 +4,9 @@ const target = path.resolve(process.env.PREFIX || "")
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  alias:{
-    "socket:*": 'socket/*'
-  },
+  // alias:{
+  //   "socket:*": 'socket/*'
+  // },
   ssr:false,
   vite:{
     build:{
@@ -32,6 +32,7 @@ export default defineNuxtConfig({
   },
   nitro:{
     static:true,
+    // preset: 'service-worker',
     "rollupConfig":{
       "external": [/socket:.*/],
     },
@@ -49,15 +50,15 @@ export default defineNuxtConfig({
       }
     }
   },
-  typescript:{
-    'tsConfig':{
-      'compilerOptions':{
-        'paths':{
-          'socket:*': ['../socket/*']
-        }
-      }
-    }
-  },
+  // typescript:{
+  //   'tsConfig':{
+  //     'compilerOptions':{
+  //       'paths':{
+  //         'socket:*': ['../socket/*']
+  //       }
+  //     }
+  //   }
+  // },
 
-  // modules: ["nuxt-build-cache"]
+  modules: ["nuxt-build-cache", '@nuxt/ui', '@vueuse/nuxt']
 })
