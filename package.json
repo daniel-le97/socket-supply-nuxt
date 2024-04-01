@@ -5,14 +5,14 @@
   "scripts": {
     "build": "run-s build:*",
     "build:nuxt": "nuxt build",
-    "build:ssc": "ssc build --prod",
+    "build:ssc": "ssc build --prod -r",
     "dev": "bun run watch",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "watch": "run-p watch:*",
     "watch:nuxt": "nuxt dev",
-    "watch:ssc": "ssc build -r --port=3000 ."
+    "watch:ssc": "ssc build -r --port=3000"
   },
   "dependencies": {
     "@nuxt/ui": "^2.15.0",

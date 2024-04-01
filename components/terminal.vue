@@ -1,61 +1,40 @@
 <template>
   <div id="app">
-    <pre id="code-section"></pre>
-    <input type="text" id="input-section" placeholder="Enter command">
+    <pre id="code-section">{{ terminalOutput }}</pre>
+    <input type="text" id="input-section" v-model="command" @keydown.enter="executeCommand" placeholder="Enter command">
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
 import extension from 'socket:extension';
 import * as os from "socket:os";
-onMounted( async() => {
-  const ext = await extension.load( 'socket-extension-terminal' );
 
-  const input = document.querySelector( '#input-section' );
-  const code = document.querySelector( '#code-section' );
+const terminalOutput = ref('');
+const command = ref('');
+const history = ref([]);
+let historyIndex = ref(0);
+const ext = await extension.load('socket-extension-terminal');
 
-  const history = [];
-  let historyIndex = 0;
+onMounted(async () => {
 
-  input.focus();
-  input.addEventListener( 'keydown', async ( e ) => {
-    if ( e.key === 'ArrowUp' && history.length > 0 )
-    {
-      input.value = history[ historyIndex ];
-      historyIndex = Math.min( historyIndex + 1, history.length - 1 );
-      e.stopPropagation();
-      e.preventDefault();
-      return;
-    }
-    if ( e.key === 'ArrowDown' && history.length > 0 )
-    {
-      input.value = history[ historyIndex ];
-      historyIndex = Math.max( historyIndex - 1, 0 );
-      e.stopPropagation();
-      e.preventDefault();
-      return;
-    }
+  window.addEventListener('data', (e) => {
+    terminalOutput.value += e.detail.data.toString() + os.EOL;
+  });
+});
 
-    if ( e.key !== 'Enter' )
-    {
-      e.stopPropagation();
-      return;
-    }
-    code.textContent += '$ ' + input.value + os.EOL
-    history.unshift( input.value );
-    historyIndex = 0;
-    await ext.binding.process.spawn( { command: input.value } );
-    input.value = '';
-    input.scrollIntoView()
-  } );
+const executeCommand = async () => {
+  if (!command.value.trim()) return;
 
-  window.addEventListener( 'data', e => {
-    code.textContent += e.detail.data.toString() + os.EOL;
-  } );
-} )
+  terminalOutput.value += `$ ${command.value}${os.EOL}`;
+  history.value.unshift(command.value);
+  historyIndex.value = 0;
+  
+  // const ext = await extension.load('socket-extension-terminal');
+  await ext.binding.process.spawn({ command: command.value });
 
-
-
+  command.value = '';
+};
 </script>
 
 <style>
