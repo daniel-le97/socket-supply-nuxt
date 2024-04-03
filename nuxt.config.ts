@@ -4,9 +4,9 @@ const target = path.resolve(process.env.PREFIX || "")
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  // alias:{
-  //   "socket:*": 'socket/*'
-  // },
+  alias:{
+    "socket:*": '../node_modules/@socketsupply/socket/*'
+  },
   ssr:false,
   vite:{
     build:{

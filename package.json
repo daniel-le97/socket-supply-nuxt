@@ -12,7 +12,7 @@
     "postinstall": "nuxt prepare",
     "watch": "run-p watch:*",
     "watch:nuxt": "nuxt dev",
-    "watch:ssc": "ssc build -r --port=3000"
+    "watch:socket": "ssc build -r --host=localhost --port=3000"
   },
   "dependencies": {
     "@nuxt/ui": "^2.15.0",
@@ -20,13 +20,16 @@
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "nuxt": "^3.11.1",
+    "vite-plugin-external": "^4.3.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.1.5",
     "nuxt-build-cache": "latest",
-    "npm-run-all2": "^6.1.2"
+    "vite-plugin-externalize-dependencies": "^0.12.0",
+    "npm-run-all2": "^6.1.2",
+    "unplugin": "1.10.1"
   },
   "optionalDependencies": {
     "@types/bun": "^1.0.12"
