@@ -1,30 +1,50 @@
 <template>
   <div>
-    <!-- <NuxtWelcome /> -->
-    <h1>{{ toProperCase(platform()) }}</h1>
+    <h1>{{ greeting }}</h1>
+    <p>Count: {{ count }}</p>
+    <button @click=" increment ">Increment</button>
+    <p>Reversed message: {{ reversedMessage }}</p>
+    <p>{{ platform() }}</p>
   </div>
 </template>
-<script setup lang="ts">
-import { watch, watchEffect } from 'vue';
-import {platform} from 'socket:os';
-import { useMagicKeys} from '@vueuse/core'
-// import { platform } from 'socket:os';
-console.log(platform())
-const { shift, space, a } = useMagicKeys()
 
-watch(space, (v) => {
-  if (v)
-    console.log('space has been pressed')
-})
+<script setup>
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { platform } from 'socket:os';
 
-watchEffect(() => {
-  if (shift.value && a.value)
-    console.log('Shift + A have been pressed')
-})
-const toProperCase = (s:string) => s[0].toUpperCase() + s.slice(1)
+// State
+const count = ref( 0 );
+const message = ref( 'Hello, Vue!' );
+const greeting = computed( () => message.value.toUpperCase() );
+const reversedMessage = computed( () => message.value.split( '' ).reverse().join( '' ) );
+
+// Methods
+const increment = () =>
+{
+  count.value++;
+};
+
+// Lifecycle hooks
+onMounted( () =>
+{
+  console.log( 'Component mounted' );
+} );
+
+onUnmounted( () =>
+{
+  console.log( 'Component unmounted' );
+} );
+
+// Watchers
+watch( message, ( newVal, oldVal ) =>
+{
+  console.log( `Message changed from "${ oldVal }" to "${ newVal }"` );
+} );
 </script>
+
 <style>
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   padding: 0;

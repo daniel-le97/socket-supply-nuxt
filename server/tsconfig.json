@@ -2,7 +2,8 @@
   "extends": "../.nuxt/tsconfig.server.json",
   "compilerOptions": {
    "baseUrl": "./",
-   "moduleResolution": "Node"
+   "moduleResolution": "Node",
+   "types": ["@socketsupply/socket"]
   },
   "exclude": ["**/mac/**"]
 }

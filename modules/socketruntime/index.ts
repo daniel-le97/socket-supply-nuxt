@@ -1,10 +1,6 @@
 import {
-  addBuildPlugin,
-  addVitePlugin,
   createResolver,
   defineNuxtModule,
-  logger,
-  useNitro,
 } from "nuxt/kit";
 
 export default defineNuxtModule({
