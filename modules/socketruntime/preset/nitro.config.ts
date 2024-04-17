@@ -5,6 +5,7 @@ import type { Nitro } from "nitropack";
 import type { NitroPreset } from "nitropack";
 // import { fixGlobals} from "./plugin";
 import { type Plugin } from "rollup";
+
 const getPath = (path: string) => {
   const metaUrl = new URL(import.meta.url).pathname;
   return metaUrl.replace("nitro.config.ts", 'runtime/' + path);
