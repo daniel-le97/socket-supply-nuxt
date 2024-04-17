@@ -3,6 +3,7 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "types": ["@socketsupply/socket"]
+    "types": ["./socket/index.d.ts"],
+    "moduleResolution": "node"
   }
 }

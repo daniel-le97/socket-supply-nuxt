@@ -1,20 +1,18 @@
-import { addBuildPlugin, addVitePlugin, defineNuxtModule } from "nuxt/kit";
-import externalize from 'vite-plugin-externalize-dependencies';
-import createExternal from 'vite-plugin-external';
+import {
+  addBuildPlugin,
+  addVitePlugin,
+  createResolver,
+  defineNuxtModule,
+  logger,
+  useNitro,
+} from "nuxt/kit";
+
 export default defineNuxtModule({
-    'meta':{
-        'name':'hello',
-    },
-    setup:(nuxtOptions, nuxt) => {
-      // nuxt.hook('build:before', () => {})
-      // addVitePlugin(createExternal({
-      // externals:{
-      //   "socket:*": ""
-      // }
-      // }))
-      //   addVitePlugin(externalize({
-      //   externals: [/^socket:.*/],
-      // }));
-       
-    }
-})
+  meta: {
+    name: "socket-runtime",
+  },
+  setup: (nuxtOptions, nuxt) => {
+    const { resolve } = createResolver(import.meta.url);
+    nuxt.options.nitro.preset = resolve("./preset");
+  },
+});
